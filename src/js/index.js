@@ -9,4 +9,17 @@ import "../styles/index.css";
 import Home from "./component/home.jsx";
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+let counter = 0;
+function finalNumber(){
+    let num = "00000"+counter;
+    let finalNum = num.slice(-6);
+    return finalNum
+}
+function refresh(){
+    counter ++;
+    finalNumber();
+    (ReactDOM.render(<Home numbersString={finalNumber()} />, document.querySelector("#app")));
+
+}
+
+setInterval(refresh,1000)
